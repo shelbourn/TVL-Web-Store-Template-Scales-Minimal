@@ -1,0 +1,13 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.auth.login.login_form.heading')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/auth/login}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

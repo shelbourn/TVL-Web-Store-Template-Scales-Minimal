@@ -1,0 +1,62 @@
+---
+brands:
+  limit: {{theme_settings.brands-per-page}}
+---
+
+{{#partial "page"}}
+
+  <header class="page-header">
+    <h1 class="page-header-title">{{lang 'brand.label'}}</h1>
+    {{#if theme_settings.pages-show-breadcrumbs}}
+      {{> components/common/breadcrumbs}}
+    {{/if}}
+  </header>
+
+  <main class="brands-listing-wrapper" data-brands-listing-wrapper>
+    {{#if brands}}
+      {{#if theme_settings.brand-listing-type '===' 'alphabetical'}}
+        <div class="brand-listing-alphabetical" data-brand-listing-alphabetical>
+          {{#each brands}}
+            <li class="brand-item"><a href="{{url}}">{{name}}</a></li>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#if theme_settings.brand-listing-type '===' 'columns'}}
+        <div class="brand-listing-columns" data-brand-listing-columns>
+          {{#each brands}}
+            <li class="brand-item"><a href="{{url}}">{{name}}</a></li>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{#if theme_settings.brand-listing-type '===' 'logos'}}
+        <div class="brand-listing-logos" data-brand-listing-logos>
+          {{#each brands}}
+            <div class="brand-logo-container">
+              <span class="brand-logo-image-container">
+                {{#if image}}
+                  <a class="brand-logo-image" href="{{url}}">
+                    <img src="{{getImage image 'medium'}}" alt="{{name}}" />
+                  </a>
+                {{else}}
+                  <span class="brand-logo-empty">
+                    {{name}}
+                  </span>
+                {{/if}}
+              </span>
+              <a class="brand-logo-information" href="{{url}}">{{name}}</a>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      {{> components/common/pagination pagination.brands}}
+    {{else}}
+      <p>{{lang 'brand.empty'}}</p>
+    {{/if}}
+  </main>
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,21 @@
+{{#if links.length '>' 1}}
+  <div class="pagination-container">
+    {{#if previous}}
+      <div class="pagination-previous">
+        <a href="{{previous}}" rel="nofollow" data-faceted-search-facet>{{lang 'core.pagination.previous'}}</a>
+      </div>
+    {{/if}}
+
+    {{#each links}}
+      <div class="pagination-number{{#if ../current '===' number}} current{{/if}}">
+        <a href="{{url}}" rel="nofollow" data-faceted-search-facet>{{number}}</a>
+      </div>
+    {{/each}}
+
+    {{#if next}}
+      <div class="pagination-next">
+        <a href="{{next}}" rel="nofollow" data-faceted-search-facet>{{lang 'core.pagination.next'}}</a>
+      </div>
+    {{/if}}
+  </div>
+{{/if}}

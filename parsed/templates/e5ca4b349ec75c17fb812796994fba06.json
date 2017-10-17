@@ -1,0 +1,1 @@
+{"components/common/facebook-like-button":"<a class=\"facebook-like\">\n  <div class=\"fb-like\"\n    data-href=\"{{../../sharing_url}}\"\n    data-layout=\"button_count\"\n    data-action=\"like\"\n    data-show-faces=\"false\">\n  </div>\n</a>\n"}

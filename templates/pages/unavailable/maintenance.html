@@ -1,0 +1,15 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'unavailable.maintenance.title')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content">
+      <div class="alert alert-error">
+        {{settings.maintenance.message}}
+      </div>
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> core/unavailable/layout}}

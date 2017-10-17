@@ -1,0 +1,54 @@
+<!doctype html>
+<html class="no-js" lang="{{ locale_name }}">
+
+<head>
+  <title>{{head.title}}</title>
+
+  {{{head.meta_tags}}}
+  {{{head.config}}}
+
+  <link href="{{head.favicon}}" rel="shortcut icon">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  {{{stylesheet '/assets/css/theme.css'}}}
+  {{ getFontsCollection }}
+
+  {{{head.scripts}}}
+  {{{head.rsslinks}}}
+  {{> components/global-injects}}
+  {{> components/snippets/facebook-like-script}}
+</head>
+
+<body class="{{page_type}} {{> components/common/body-classes}}">
+  <div class="icon-sprite">{{> components/common/icons/sprite}}</div>
+
+  <div class="quick-shop-wrapper modal-overlay" data-quick-shop-wrapper></div>
+  <div class="quick-shop modal" data-quick-shop></div>
+
+  {{> components/header/header-layout}}
+
+  {{!#if carousel}}
+    {{!> components/carousel}}
+  {{!/if}}
+
+  <main class="main-content" data-main-content>
+    {{#block "page"}}{{/block}}
+  </main>
+
+  {{#if banners.bottom.length}}
+    {{> components/common/banner banners=banners.bottom}}
+  {{/if}}
+
+  {{> components/footer/footer-layout}}
+
+  <script src="{{cdn '/assets/js/bundle.js'}}"></script>
+
+  <script>
+    // Exported in app.js
+    window.stencilBootstrap("{{template_file}}", {{jsContext}}).load();
+  </script>
+
+  {{{footer.scripts}}}
+
+  {{{snippet 'footer'}}}
+</body>
+</html>

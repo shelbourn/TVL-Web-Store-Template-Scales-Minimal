@@ -1,0 +1,29 @@
+<footer class="footer-main" role="banner">
+  {{#any settings.gift_certificates_enabled settings.account_creation_enabled}}
+    <nav class="footer-navigation">
+      {{> components/footer/footer-navigation}}
+    </nav>
+  {{/any}}
+
+  {{#if social_media.length}}
+    <nav class="footer-social">
+      {{> components/footer/footer-social}}
+    </nav>
+  {{/if}}
+
+  {{#if settings.show_newsletter_box}}
+    <nav class="footer-newsletter">
+      {{> components/footer/footer-newsletter}}
+    </nav>
+  {{/if}}
+
+  <div class="footer-branding">
+    {{> components/footer/footer-branding}}
+  </div>
+
+  <div class="footer-credits">
+    {{> components/footer/footer-credits}}
+  </div>
+</footer>
+
+<div class="search-form-overlay" data-search-form-overlay></div>

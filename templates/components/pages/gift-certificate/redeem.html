@@ -1,0 +1,12 @@
+{{> core/gift-certificate/navigation page='redeem'}}
+
+<div class="giftcard-body">
+  <h2 class="giftcard-heading">{{lang 'core.giftcard.redeem.heading'}}</h2>
+  <p>{{lang 'core.giftcard.redeem.subheading' store_name=settings.store_name }}</p>
+  <ol>
+    <li>{{lang 'core.giftcard.redeem.item1' }}</li>
+    <li>{{lang 'core.giftcard.redeem.item2' }}</li>
+    <li>{{{lang 'core.giftcard.redeem.item3' cart_url=urls.cart }}}</li>
+    <li>{{lang 'core.giftcard.redeem.item4' }}</li>
+  </ol>
+</div>

@@ -1,0 +1,13 @@
+{{#if category.products}}
+  <div class="product-collection-item-list">
+    {{#each category.products}}
+      {{> components/product/product-item overlay=../theme_settings.collection_products_overlay_type}}
+    {{/each}}
+
+    {{> components/collection/collection-pagination pagination.category}}
+  </div>
+{{else}}
+  <p class="empty-results">
+    <span>{{lang 'category.empty'}}</span>
+  </p>
+{{/if}}

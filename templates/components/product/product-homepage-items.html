@@ -1,0 +1,11 @@
+<div
+  class="product-grid-homepage-container-inner
+  {{#if mosaic}}product-grid-mosaic{{/if}}
+  {{#if full_width}}product-grid-full-width{{/if}}"
+  data-quick-shop-scope>
+  <div class="product-grid-homepage-list">
+    {{#each products}}
+      {{> components/product/product-item this overlay=../theme_settings.collection_products_overlay_type}}
+    {{/each}}
+  </div>
+</div>

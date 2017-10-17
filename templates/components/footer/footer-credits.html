@@ -1,0 +1,23 @@
+<ul class="footer-credits-list">
+  {{#if theme_settings.footer_copyright}}
+    <li class="footer-credits-list-item">
+      <p>&copy; <script>document.write(new Date().getFullYear())</script> {{settings.store_name}}</p>
+    </li>
+  {{/if}}
+
+  {{#if theme_settings.footer_theme_credits}}
+    <li class="footer-credits-list-item">
+      <p>Scales theme by <a href="https://pixelunion.net" target="_blank" rel="nofollow">Pixel Union</a></p>
+    </li>
+
+    <li class="footer-credits-list-item">
+      <p>Powered by <a href="http://www.bigcommerce.com/" target="_blank" rel="nofollow">BigCommerce</a></p>
+    </li>
+  {{/if}}
+
+  {{#if theme_settings.footer_sitemap}}
+    <li class="footer-credits-list-item">
+      <p><a href="{{urls.sitemap}}">{{lang 'sitemap.title'}}</a></p>
+    </li>
+  {{/if}}
+</ul>

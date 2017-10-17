@@ -1,0 +1,14 @@
+<div data-product-reviews-list>
+  {{#each product.reviews.list}}
+    {{> components/reviews/review-item}}
+  {{/each}}
+
+  {{#if pagination.reviews.next}}
+    <div class="product-reviews-load-more">
+      <button class="product-reviews-load-more-button button" data-load-more-reviews-button data-load-more-url="{{pagination.reviews.next}}">
+        {{lang 'product.reviews.load_more'}}
+        <svg class="product-reviews-loading-icon"><use xlink:href="#icon-loading"></svg>
+      </button>
+    </div>
+  {{/if}}
+</div>

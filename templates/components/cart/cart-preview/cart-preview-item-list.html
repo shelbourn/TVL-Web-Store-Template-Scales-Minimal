@@ -1,0 +1,72 @@
+{{#if cart.items}}
+  <div class="cart-preview-item-list" data-cart-preview-item-list>
+    {{#each cart.items}}
+      <div class="cart-preview-item">
+        <div class="cart-preview-item-details">
+          <h4 class="cart-preview-item-title">
+            {{#if url}}
+              <a href="{{url}}">{{name}}</a>
+            {{else}}
+              <a href="{{edit_url}}">{{name}}</a>
+            {{/if}}
+          </h4>
+
+          <p class="cart-preview-item-price {{#if price_discounted}}price-discounted{{/if}}">
+            {{price.formatted}}
+            <span>&times; {{quantity}}</span>
+          </p>
+
+          {{#if price_discounted}}
+            <p class="cart-preview-item-price">
+              {{price_discounted.formatted}}
+              <span>&times; {{quantity}}</span>
+            </p>
+          {{/if}}
+        </div>
+
+        <figure class="cart-preview-item-image">
+          {{#if type '===' 'GiftCertificate'}}
+            <a href="javascript:void(0)" style="background-image:url({{cdn '/assets/img/giftcard-image.svg'}});">
+              <img src="{{cdn '/assets/img/giftcard-image.svg'}}" alt="{{recipient}}">
+            </a>
+          {{else}}
+            {{#if image}}
+              <a href="{{url}}" style="background-image:url({{getImage image 'small'}});">
+                <img src="{{getImage image 'small'}}" alt="{{image.alt}}">
+              </a>
+            {{else}}
+              <a href="{{edit_url}}" style="background-image:url({{cdn '/assets/img/no-image.svg'}});">
+                <img class="no-image" src="{{cdn '/assets/img/no-image.svg'}}" alt="{{name}}">
+              </a>
+            {{/if}}
+          {{/if}}
+
+          <button class="cart-preview-item-remove" data-cart-preview-item-remove data-product-id="{{id}}" href="{{remove_url}}">
+            <svg class="icon icon-close"><use xlink:href="#icon-close" /></svg>
+          </button>
+        </figure>
+      </div>
+    {{/each}}
+  </div>
+
+  <footer class="cart-preview-footer" data-cart-preview-footer>
+    <h5 class="cart-preview-footer-title">
+      {{lang 'cart.subtotal'}}
+      <span class="cart-preview-footer-subtotal">{{cart.sub_total.formatted}}</span>
+    </h5>
+
+    <div class="cart-preview-button-wrapper">
+      <a class="button" href="{{urls.checkout.single_address}}">{{lang 'cart.cart_preview.check_out'}}</a>
+    </div>
+  </footer>
+
+  {{> components/cart/cart-preview/cart-preview-navigation}}
+{{else}}
+  <div class="cart-preview-item-list" data-cart-preview-item-list>
+    <div class="cart-preview-empty">
+      <p class="cart-preview-empty-message">{{lang 'cart.cart_preview.empty'}}
+    </div>
+  </div>
+
+  {{> components/cart/cart-preview/cart-preview-navigation}}
+{{/if}}

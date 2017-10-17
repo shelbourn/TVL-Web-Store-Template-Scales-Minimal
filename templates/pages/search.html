@@ -1,0 +1,40 @@
+---
+product_results:
+  limit: {{theme_settings.collection_products_per_page}}
+---
+
+{{#partial "page"}}
+
+  {{> components/collection/collection-header collection=product_results}}
+
+  {{#if banners.top.length}}
+    {{> components/common/banner banners=banners.top}}
+  {{/if}}
+
+  <main class="product-collection-container" data-collection>
+    <section class="product-collection-container-inner">
+
+      <div class="search-tab-content">
+        <div class="tab-content-panel search-results-products active" id="search-results-products">
+          {{> components/collection/collection-sorting collection=product_results sort=pagination.product_results.sort}}
+
+          <aside class="product-collection-filter-sidebar" data-collection-sidebar>
+            {{> components/collection/search/search-sidebar}}
+          </aside>
+
+          <section class="product-collection-item-list-container" data-collection-product-list data-quick-shop-scope>
+            {{> components/collection/search/search-products}}
+          </section>
+        </div>
+
+        {{> components/collection/search/search-content}}
+
+        {{> components/collection/search/search-categories}}
+      </div>
+
+    </section>
+  </main>
+
+{{/partial}}
+
+{{> layout/base}}

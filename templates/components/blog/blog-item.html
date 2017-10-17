@@ -1,0 +1,30 @@
+<article class="blog-item {{#if ../type '===' featured}}blog-featured-post{{/if}}">
+  <figure class="blog-item-image-container">
+
+    <a class="blog-item-image" href="{{url}}"
+    {{#if thumbnail}}
+      style="background-image: url({{getImage thumbnail}});"
+    {{else}}
+      style="background-image: url({{cdn '/assets/img/no-image.svg'}});"
+    {{/if}}>{{title}}</a>
+
+    <img class="show-for-sr" alt="{{thumbnail.alt}}"
+      {{#if thumbnail}}>
+        src="{{getImage thumbnail}}"
+      {{else}}
+        src="{{cdn '/assets/img/no-image.svg'}}"
+      {{/if}}>
+  </figure>
+
+  <div class="blog-item-details-container">
+    <div class="blog-item-details">
+      <a class="blog-item-details-text" href="{{url}}">
+        <h4 class="blog-item-title">{{title}}</h4>
+
+        {{#if date_published}}
+          <p class="blog-item-date">{{date_published}}</p>
+        {{/if}}
+      </a>
+    </div>
+  </div>
+</article>

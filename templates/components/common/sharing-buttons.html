@@ -1,0 +1,87 @@
+{{#if settings.add_this.buttons}}
+  <section class="sharing-buttons">
+    {{#each settings.add_this.buttons}}
+
+      {{#if service '===' 'facebook'}}
+        <span class="sharing-button">
+          <a href="//www.facebook.com/sharer.php?u={{../../sharing_url}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-facebook">
+              <use xlink:href="#icon-facebook"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'google_plusone'}}
+        <span class="sharing-button">
+          <a href="//plus.google.com/share?url={{../../sharing_url}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-google">
+              <use xlink:href="#icon-google"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'email'}}
+        <span class="sharing-button">
+          <a href="mailto:?subject={{../../sharing_title}}&amp;body={{../../sharing_url}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-mail">
+              <use xlink:href="#icon-mail"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'print'}}
+        <span class="sharing-button">
+          <a href="javascript:;" onclick="window.print()">
+            <svg width="20" height="20" class="icon icon-print">
+              <use xlink:href="#icon-print"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'twitter'}}
+        <span class="sharing-button">
+          <a href="//twitter.com/share?url={{../../sharing_url}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-twitter">
+              <use xlink:href="#icon-twitter"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'pinterest'}}
+        <span class="sharing-button">
+          <a href="//pinterest.com/pin/create/button/?url={{../../../sharing_url}}{{#if ../../../sharing_image}}&amp;media={{getImage ../../../sharing_image 'medium'}}{{/if}}&amp;description={{../../../sharing_title}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-pinterest">
+              <use xlink:href="#icon-pinterest"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+      {{#if service '===' 'linkedin'}}
+        <span class="sharing-button">
+          <a href="//www.linkedin.com/shareArticle?mini=true&amp;url={{../../../sharing_url}}&amp;title={{../../sharing_title}}" target="_blank">
+            <svg width="20" height="20" class="icon icon-linkedin">
+              <use xlink:href="#icon-linkedin"></use>
+            </svg>
+          </a>
+        </span>
+      {{/if}}
+
+    {{/each}}
+
+    {{#each settings.add_this.buttons}}
+
+      {{#if service '===' 'facebook_like'}}
+        <span class="sharing-button has-fb-like">
+          {{> components/common/facebook-like-button}}
+        </span>
+      {{/if}}
+
+    {{/each}}
+  </section>
+{{/if}}

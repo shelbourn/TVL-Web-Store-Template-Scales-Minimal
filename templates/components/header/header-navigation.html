@@ -1,0 +1,211 @@
+<button class="mobile-navigation-trigger" data-mobile-navigation-trigger>
+  <span class="mobile-navigation-trigger-bar"></span>
+  <span class="mobile-navigation-trigger-bar"></span>
+</button>
+
+<ul class="header-navigation-list primary-tier" data-primary-tier>
+
+  <li class="header-navigation-list-item header-search-form" data-search-form>
+    {{> components/common/search-form}}
+  </li>
+
+  <span class="header-navigation-list-overflow">
+    {{#each categories}}
+      <li class="header-navigation-list-item
+        {{#if children}}has-children{{/if}}
+        {{#if ../products}}products-navigation{{/if}}"
+        {{#if children}}
+          data-dropdown-toggle
+
+          {{#if ../../products}}data-products-toggle{{/if}}
+        {{/if}}>
+
+        <a href="{{url}}">
+          <span class="header-navigation-list-item-label">
+            {{name}}
+
+            {{#if children}}
+              <span class="header-navigation-list-item-arrow">
+                <svg><use xlink:href="#icon-chevron-right"></svg>
+              </span>
+
+              <span class="header-navigation-list-item-toggle">
+                <span class="header-navigation-list-item-toggle-bar"></span>
+                <span class="header-navigation-list-item-toggle-bar"></span>
+              </span>
+            {{/if}}
+          </span>
+        </a>
+
+        {{#if children}}
+          <ul class="header-navigation-list secondary-tier" data-secondary-tier>
+            {{#if ../../products}}
+              <div class="header-navigation-product-categories">
+            {{/if}}
+
+            {{#each children}}
+              <li class="header-navigation-list-item {{#if children}}has-children{{/if}}"
+                {{#if children}}data-dropdown-toggle{{/if}}
+                {{#if ../../../products}}data-products-toggle{{/if}}
+                >
+
+                <a href="{{url}}">
+                  <span class="header-navigation-list-item-label">
+                    {{name}}
+
+                    {{#if children}}
+                      <span class="header-navigation-list-item-arrow">
+                        <svg><use xlink:href="#icon-chevron-right"></svg>
+                      </span>
+
+                      <span class="header-navigation-list-item-toggle">
+                        <span class="header-navigation-list-item-toggle-bar"></span>
+                        <span class="header-navigation-list-item-toggle-bar"></span>
+                      </span>
+                    {{/if}}
+                  </span>
+                </a>
+
+                {{> components/header/header-navigation-recursive products=../../../products}}
+              </li>
+            {{/each}}
+
+            <li class="header-navigation-list-item view-all-link">
+              <a href="{{url}}"><span class="header-navigation-list-item-label">{{lang 'header.navigation.view_all' category=name}}</span></a>
+            </li>
+
+            {{#if ../../products}}
+              </div>
+
+              <div class="header-navigation-product-container" data-header-navigation-products data-quick-shop-scope>
+                {{> components/header/header-navigation-products}}
+              </div>
+            {{/if}}
+          </ul>
+        {{/if}}
+      </li>
+    {{/each}}
+
+    {{#if theme_settings.pages_in_navigation '==' 'pages_in_navigation_main'}}
+      {{#each pages}}
+        <li class="header-navigation-list-item {{#if children}}has-children{{/if}}" {{#if children}}data-dropdown-toggle{{/if}}>
+          <a href="{{url}}">
+            <span class="header-navigation-list-item-label">
+              {{name}}
+
+              {{#if children}}
+                <span class="header-navigation-list-item-arrow">
+                  <svg><use xlink:href="#icon-chevron-right"></svg>
+                </span>
+
+                <span class="header-navigation-list-item-toggle">
+                  <span class="header-navigation-list-item-toggle-bar"></span>
+                  <span class="header-navigation-list-item-toggle-bar"></span>
+                </span>
+              {{/if}}
+            </span>
+          </a>
+
+          {{#if children}}
+            <ul class="header-navigation-list secondary-tier" data-secondary-tier>
+              {{#each children}}
+                <li class="header-navigation-list-item {{#if children}}has-children{{/if}}" {{#if children}}data-dropdown-toggle{{/if}}>
+                  <a href="{{url}}">
+                    <span class="header-navigation-list-item-label">
+                      {{name}}
+
+                      {{#if children}}
+                        <span class="header-navigation-list-item-arrow">
+                          <svg><use xlink:href="#icon-chevron-right"></svg>
+                        </span>
+
+                        <span class="header-navigation-list-item-toggle">
+                          <span class="header-navigation-list-item-toggle-bar"></span>
+                          <span class="header-navigation-list-item-toggle-bar"></span>
+                        </span>
+                      {{/if}}
+                    </span>
+                  </a>
+
+                  {{#if children}}
+                    <ul class="header-navigation-list extended-tier" data-extended-tier>
+                      {{#each children}}
+                        <li class="header-navigation-list-item">
+                          <a href="{{url}}">
+                            <span class="header-navigation-list-item-label">
+                              {{name}}
+                            </span>
+                          </a>
+                        </li>
+                      {{/each}}
+                    </ul>
+                  {{/if}}
+                </li>
+              {{/each}}
+            </ul>
+          {{/if}}
+        </li>
+      {{/each}}
+    {{/if}}
+
+    {{#if theme_settings.pages_in_navigation '==' 'pages_in_navigation_submenu'}}
+      <li class="header-navigation-list-item has-children" data-dropdown-toggle>
+        <a href="#">
+          <span class="header-navigation-list-item-label">
+            {{lang 'header.navigation.more'}}
+
+            <span class="header-navigation-list-item-arrow">
+              <svg><use xlink:href="#icon-chevron-right"></svg>
+            </span>
+
+            <span class="header-navigation-list-item-toggle">
+              <span class="header-navigation-list-item-toggle-bar"></span>
+              <span class="header-navigation-list-item-toggle-bar"></span>
+            </span>
+          </span>
+        </a>
+
+        <ul class="header-navigation-list secondary-tier" data-secondary-tier>
+          {{#each pages}}
+            <li class="header-navigation-list-item {{#if children}}has-children{{/if}}" {{#if children}}data-dropdown-toggle{{/if}}>
+              <a href="{{url}}">
+                <span class="header-navigation-list-item-label">
+                  {{name}}
+
+                  {{#if children}}
+                    <span class="header-navigation-list-item-arrow">
+                      <svg><use xlink:href="#icon-chevron-right"></svg>
+                    </span>
+
+                    <span class="header-navigation-list-item-toggle">
+                      <span class="header-navigation-list-item-toggle-bar"></span>
+                      <span class="header-navigation-list-item-toggle-bar"></span>
+                    </span>
+                  {{/if}}
+                </span>
+              </a>
+
+              {{#if children}}
+                <ul class="header-navigation-list extended-tier" data-extended-tier>
+                  {{#each children}}
+                    <li class="header-navigation-list-item">
+                      <a href="{{url}}">
+                        <span class="header-navigation-list-item-label">
+                          {{name}}
+                        </span>
+                      </a>
+                    </li>
+                  {{/each}}
+                </ul>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      </li>
+    {{/if}}
+  </span>
+
+  <li class="header-navigation-list-item header-mobile-actions">{{> components/header/header-mobile-actions}}</li>
+</ul>
+
+<div class="header-navigation-overlay" data-header-navigation-overlay></div>

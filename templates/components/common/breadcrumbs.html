@@ -1,0 +1,5 @@
+<section class="breadcrumbs-container">
+  {{#each breadcrumbs}}
+    <a href="{{url}}">{{name}}</a> {{#unless @last}}/{{/unless}}
+  {{/each}}
+</section>

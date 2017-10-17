@@ -1,0 +1,18 @@
+
+{{#partial "page"}}
+
+  {{#if forms.address.address_id}}
+    {{> components/pages/page-header page_title=(lang 'forms.address.edit.heading')}}
+  {{else}}
+    {{> components/pages/page-header page_title=(lang 'forms.address.add.heading')}}
+  {{/if}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/account/add-address}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

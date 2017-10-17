@@ -1,0 +1,15 @@
+<header class="header-main" role="banner" data-header-main>
+  <div class="header-branding">
+    {{> components/header/header-branding}}
+  </div>
+
+  <nav class="header-navigation" data-header-navigation>
+    {{> components/header/header-navigation products=theme_settings.products_in_navigation}}
+  </nav>
+
+  <div class="header-tools" data-header-tools>
+    {{> components/header/header-tools}}
+
+    <div class="cart-preview-overlay" data-cart-preview-overlay></div>
+  </div>
+</header>

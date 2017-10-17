@@ -1,0 +1,38 @@
+<div class="product-gallery-slideshow {{#if product.images.length '>' 1}}visible-controls{{/if}}">
+  <div class="product-gallery-slideshow-images" data-slideshow-position="0" data-product-slideshow>
+    {{#if product.images}}
+      {{#each product.images}}
+        <img class="product-gallery-slideshow-image" data-image-position="{{@index}}" src="{{getImage this 'large'}}" alt="{{this.alt}}" data-product-slideshow-image>
+      {{/each}}
+    {{else}}
+      <img class="product-gallery-slideshow-image no-image" data-image-position="{{@index}}" src="{{cdn '/assets/img/no-image.svg'}}" alt="{{lang 'product.no_image'}}" data-product-slideshow-image>
+    {{/if}}
+  </div>
+
+  <div class="
+    product-gallery-slideshow-thumbnail-list
+    {{#if product.images.length "<" 2}}product-gallery-slideshow-thumbnail-list-single{{/if}}
+  ">
+    {{#if product.images}}
+      {{#each product.images}}
+        <span
+          class="product-gallery-slideshow-thumbnail {{#if @first}}active{{/if}}"
+          style="background-image: url({{getImage this 'small'}});"
+          data-image-position="{{@index}}"
+          data-high-res="{{getImage this 'large'}}"
+          data-product-thumbnail>
+          <img class="show-for-sr" src="{{getImage this 'small'}}" alt="{{this.alt}}">
+        </span>
+      {{/each}}
+    {{else}}
+      <span
+        class="product-gallery-slideshow-thumbnail {{#if @first}}active{{/if}}"
+        style="background-image: url({{cdn '/assets/img/no-image.svg'}});"
+        data-image-position="{{@index}}"
+        data-high-res="{{cdn '/assets/img/no-image.svg'}}"
+        data-product-thumbnail>
+        <img class="show-for-sr" src="{{cdn '/assets/img/no-image.svg'}}" alt="{{this.alt}}">
+      </span>
+    {{/if}}
+  </div>
+</div>

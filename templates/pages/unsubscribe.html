@@ -1,0 +1,15 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'newsletter.unsubscribed_heading')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content">
+      <div class="alert alert-success">
+        {{{lang 'newsletter.unsubscribed_message' store_name=settings.store_name}}}
+      </div>
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

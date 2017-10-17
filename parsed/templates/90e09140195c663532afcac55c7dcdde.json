@@ -1,0 +1,1 @@
+{"components/pages/syndicated-content":"{{#each articles}}\n  <article class=\"rss-feed-article\">\n    <h2 class=\"rss-feed-article-title\"><a href=\"{{url}}\" alt=\"{{title}}\">{{title}}</a></h2>\n    <span class=\"rss-feed-article-content\">{{{content}}}</span>\n  </article>\n{{/each}}\n"}

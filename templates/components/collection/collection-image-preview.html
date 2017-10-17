@@ -1,0 +1,10 @@
+<div class="image-preview-slice-container">
+  {{#each product.images}}
+    <div class="image-preview-slice-image
+      {{#if @index '===' 0}}visible{{/if}}"
+      style="background-image:url('{{getImage this 'medium'}}');"
+      data-image-index="{{@index}}"></div>
+  {{/each}}
+</div>
+
+<div class="image-preview-slice-trigger-container"></div>

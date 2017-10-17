@@ -1,0 +1,19 @@
+---
+customer:
+  orders:
+    limit: 10
+---
+
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.account.orders.heading_completed')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/account/orders/completed}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,44 @@
+{{#partial "page"}}
+
+<article class="blog-post-single">
+
+  <header class="blog-post-header">
+    <div class="blog-post-meta-container">
+      {{#if blog.post.date_published}}
+        <time class="blog-post-meta timestamp">{{blog.post.date_published}}</time>
+      {{/if}}
+
+      {{#if blog.post.author}}
+        <span class="blog-post-meta author">{{lang 'blog.posted_by' author=blog.post.author}}</span>
+      {{/if}}
+    </div>
+
+    <h1 class="blog-post-title">{{blog.post.title}}</h1>
+
+    {{#if blog.post.thumbnail}}
+      <figure class="blog-post-image" style="background-image: url({{getImage blog.post.thumbnail 'large'}});">
+        <img class="show-for-sr" src="{{getImage blog.post.thumbnail 'medium'}}" alt="{{blog.post.title}}">
+      </figure>
+    {{/if}}
+  </header>
+
+  <div class="blog-post-content user-defined-content">
+    {{{blog.post.body}}}
+  </div>
+
+  {{#if blog.post.tags.length}}
+    <div class="blog-post-tags">
+      <h4 class="blog-post-tags-title">{{lang 'blog.tag_title'}}</h4>
+      {{#each blog.post.tags}}
+        <a href="{{url}}" title="{{lang 'blog.tag_permalink' tag=name}}">{{lang 'blog.tag_formatted' tag=name}}</a>{{#unless @last}},&nbsp;{{/unless}}
+      {{/each}}
+    </div>
+  {{/if}}
+
+  {{> components/common/sharing-buttons sharing_title=blog.post.title sharing_url=blog.post.url sharing_image=blog.post.thumbnail}}
+
+</article>
+
+{{/partial}}
+
+{{> layout/base}}

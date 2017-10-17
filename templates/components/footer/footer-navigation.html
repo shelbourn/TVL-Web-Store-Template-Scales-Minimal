@@ -1,0 +1,59 @@
+<ul class="footer-navigation-list">
+  {{#if settings.gift_certificates_enabled}}
+    <li class="footer-navigation-list-item">
+      <a href="{{urls.gift_certificate.purchase}}">
+        <span class="footer-navigation-list-item-label">
+          {{lang 'footer.gift_certificate'}}
+        </span>
+      </a>
+    </li>
+  {{/if}}
+
+  {{#if settings.show_wishlist}}
+    {{#if customer}}
+      <li class="footer-navigation-list-item">
+        <a href="{{urls.account.wishlists.all}}">
+          <span class="footer-navigation-list-item-label">
+            {{lang 'footer.wishlist'}}
+          </span>
+        </a>
+      </li>
+    {{/if}}
+  {{/if}}
+
+  {{#if settings.account_creation_enabled}}
+    {{#if customer}}
+      <li class="footer-navigation-list-item">
+        <a href="{{urls.account.index}}">
+          <span class="footer-navigation-list-item-label">
+            {{lang 'footer.your_account'}}
+          </span>
+        </a>
+      </li>
+
+      <li class="footer-navigation-list-item">
+        <a href="{{urls.auth.logout}}">
+          <span class="footer-navigation-list-item-label">
+            {{lang 'footer.log_out'}}
+          </span>
+        </a>
+      </li>
+    {{else}}
+      <li class="footer-navigation-list-item">
+        <a href="{{urls.auth.login}}">
+          <span class="footer-navigation-list-item-label">
+            {{lang 'footer.log_in'}}
+          </span>
+        </a>
+      </li>
+
+      <li class="footer-navigation-list-item">
+        <a href="{{urls.auth.create_account}}">
+          <span class="footer-navigation-list-item-label">
+            {{lang 'footer.sign_up'}}
+          </span>
+        </a>
+      </li>
+    {{/if}}
+  {{/if}}
+</ul>

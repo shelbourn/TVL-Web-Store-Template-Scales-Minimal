@@ -1,0 +1,21 @@
+<div class="product-gallery-overlay" data-product-gallery-overlay>
+  <section class="images-overlay-inner-container" data-overlay-image-list>
+    {{#each product.images}}
+      <figure class="product-gallery-overlay-image" data-overlay-image data-image-id="{{@index}}">
+        <img src="{{getImage this 'zoom'}}" alt="{{this.alt}}" />
+      </figure>
+    {{/each}}
+  </section>
+
+  <div class="product-gallery-overlay-thumbnails" data-overlay-thumbnail-list>
+    {{#each product.images}}
+      <div class="product-gallery-overlay-thumbnails-item" data-overlay-thumbnail data-find-image-id="{{@index}}">
+        <img src="{{getImage this 'small'}}" alt="{{this.alt}}" />
+      </div>
+    {{/each}}
+  </div>
+
+  <button class="images-overlay-close" data-product-gallery-overlay-close>
+    <svg class="icon icon-close"><use xlink:href="#icon-close" /></svg>
+  </button>
+</div>

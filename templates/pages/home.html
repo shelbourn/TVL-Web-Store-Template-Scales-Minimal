@@ -1,0 +1,47 @@
+---
+carousel: true
+products:
+  new:
+    limit: {{theme_settings.homepage_products_new}}
+  featured:
+    limit: {{theme_settings.homepage_products_featured}}
+  top_sellers:
+    limit: {{theme_settings.homepage_products_popular}}
+blog:
+  recent_posts:
+    limit: {{theme_settings.homepage_blog_posts}}
+---
+
+{{#partial "page"}}
+
+  {{#if carousel}}
+    {{#if carousel.slides.length}}
+      {{> components/carousel}}
+    {{/if}}
+  {{/if}}
+
+  {{#if banners.top.length}}
+    {{> components/common/banner banners=banners.top}}
+  {{/if}}
+
+  {{> components/product/product-homepage}}
+
+  {{#if settings.blog_enabled}}
+    {{#if blog.recent_posts.length ">" 1}}
+      {{#if theme_settings.homepage_blog_posts '>' 0}}
+        {{#if theme_settings.homepage_blog_title}}
+          <h2 class="section-title">{{lang 'home.blog_heading'}}</h2>
+        {{/if}}
+
+        <section class="blog-recent-posts-container">
+          {{#each blog.recent_posts}}
+            {{> components/blog/blog-item this type=featured}}
+          {{/each}}
+        </section>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+{{/partial}}
+
+{{> layout/base}}

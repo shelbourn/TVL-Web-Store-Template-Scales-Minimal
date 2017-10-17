@@ -1,0 +1,43 @@
+{{#if cart.quantity '>' 0}}
+  <header class="cart-item-list-header">
+    <span class="cart-item-list-header-item cart-item-list-header-content">
+      {{cart.quantity}}
+
+      {{#if cart.quantity '>' 1}}
+        {{lang 'cart.item_plural'}}
+      {{else}}
+        {{lang 'cart.item'}}
+      {{/if}}
+    </span>
+
+    <span class="cart-item-list-header-overflow">
+      <span class="cart-item-list-header-item cart-item-list-header-quantity">{{lang 'cart.quantity'}}</span>
+      <span class="cart-item-list-header-item cart-item-list-header-price">{{lang 'cart.item_price'}}</span>
+      <span class="cart-item-list-header-item cart-item-list-header-total">{{lang 'cart.total'}}</span>
+    </span>
+  </header>
+
+  <div class="cart-item-list">
+    {{#each cart.items}}
+      <article class="cart-item" data-item-id="{{id}}" data-cart-item>
+        <div class="cart-item-column cart-item-content">
+          {{> components/cart/cart-item/cart-item-content}}
+        </div>
+
+        <span class="cart-item-column-overflow">
+          <div class="cart-item-column cart-item-quantity" data-column-title="{{lang 'cart.quantity'}}">
+            {{> components/cart/cart-item/cart-item-quantity}}
+          </div>
+
+          <div class="cart-item-column cart-item-price" data-column-title="{{lang 'cart.item_price'}}">
+            {{> components/cart/cart-item/cart-item-price}}
+          </div>
+
+          <div class="cart-item-column cart-item-total" data-column-title="{{lang 'cart.total'}}">
+            {{> components/cart/cart-item/cart-item-total}}
+          </div>
+        </span>
+      </article>
+    {{/each}}
+  </div>
+{{/if}}

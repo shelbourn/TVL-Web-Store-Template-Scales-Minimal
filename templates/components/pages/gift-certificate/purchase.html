@@ -1,0 +1,104 @@
+{{> core/gift-certificate/navigation page='purchase'}}
+
+<div class="giftcard-body">
+  {{#each forms.gift_certificate.errors}}
+    {{> core/alerts/alert-error}}
+  {{/each}}
+
+  <h2 class="giftcard-heading">{{lang 'core.giftcard.purchase.heading'}}</h2>
+
+  <p>{{lang 'core.giftcard.purchase.subheading'}}</p>
+
+  <form class="form giftcard-form" method="post" id="giftcard-form" action="{{forms.gift_certificate.action}}" data-giftcard-purchase-form>
+    {{#if forms.gift_certificate.cart_item_id}}
+      <input type="hidden" name="cartitemid" value="{{forms.gift_certificate.cart_item_id}}">
+    {{/if}}
+
+    {{> core/forms/common/text required=true label=(lang 'core.giftcard.purchase.from_name') name="from_name" id="from_name" value=forms.gift_certificate.values.from_name}}
+
+    {{> core/forms/common/text required=true label=(lang 'core.giftcard.purchase.from_email') name="from_email" id="from_email" value=forms.gift_certificate.values.from_email}}
+
+    {{> core/forms/common/text required=true label=(lang 'core.giftcard.purchase.to_name') name="to_name" id="to_name" value=forms.gift_certificate.values.to_name}}
+
+    {{> core/forms/common/text required=true label=(lang 'core.giftcard.purchase.to_email') name="to_email" id="to_email" value=forms.gift_certificate.values.to_email}}
+
+    {{#if forms.gift_certificate.can_use_custom_amount}}
+      <div class="form-field form-field-number required">
+        <label class="form-label" for="giftcard-amount">
+          <span class="form-field-title">
+            {{lang 'core.giftcard.purchase.amount'}}
+            <span class="required-text">{{lang 'common.required'}}</span>
+          </span>
+          <input type="number"
+            class="form-input"
+            id="giftcard-amount"
+            name="certificate_amount"
+            min="{{forms.gift_certificate.minimum.value}}"
+            max="{{forms.gift_certificate.maximum.value}}"
+            value="{{forms.gift_certificate.values.amount.value}}"
+            data-min-formatted="{{forms.gift_certificate.minimum.formatted}}"
+            data-max-formatted="{{forms.gift_certificate.maximum.formatted}}"
+            step="any"
+            required>
+        </label>
+        <small class="form-help-message">{{lang 'core.giftcard.purchase.custom_range' min=forms.gift_certificate.minimum.formatted max=forms.gift_certificate.maximum.formatted}}</small>
+      </div>
+    {{else}}
+      <div class="form-field required">
+        <label class="form-label" for="giftcard-selected-amount">
+          <span class="form-field-title">
+            {{lang 'core.giftcard.purchase.amount'}}
+            <span class="required-text">{{lang 'common.required'}}</span>
+          </span>
+        </label>
+        <select class="form-input form-select" id="giftcard-selected-amount" name="selected_amount" required>
+          {{#each forms.gift_certificate.amount_options}}
+            <option value="{{value}}">{{formatted}}</option>
+          {{/each}}
+        </select>
+      </div>
+    {{/if}}
+
+    {{> core/forms/common/multiline label=(lang 'core.giftcard.purchase.message') name="message" rows=4 id="giftcard-message" value=forms.gift_certificate.values.message}}
+
+    <div class="form-field giftcard-form-theme" data-giftcard-theme data-giftcard-preview-url="{{forms.gift_certificate.preview}}">
+      {{> core/forms/common/radio
+          required=true label=(lang 'core.giftcard.purchase.theme')
+          radios=forms.gift_certificate.themes
+          name='certificate_theme'
+      }}
+      <div class="giftcard-form-preview"></div>
+    </div>
+
+    {{#if forms.gift_certificate.expires_in_days}}
+      <div class="form-field form-field-checkbox required">
+        <label class="form-label" for="giftcard-agree">
+          <input type="checkbox" class="form-checkbox" name="agree" id="giftcard-agree" required>
+          <span class="form-label-text">
+            {{lang 'core.giftcard.purchase.agree' days=forms.gift_certificate.expires_in_days}}
+          </span>
+        </label>
+      </div>
+    {{/if}}
+
+    <div class="form-field form-field-checkbox required">
+      <label class="form-label" for="giftcard-agree2">
+        <input type="checkbox" class="form-checkbox" name="agree2" id="giftcard-agree2" required>
+        <span class="form-label-text">
+          {{lang 'core.giftcard.purchase.agree2'}}
+        </span>
+      </label>
+    </div>
+
+    <div class="form-actions giftcard-form-actions">
+      {{inject 'previewError' (lang 'core.giftcard.purchase.preview_error')}}
+
+      <input class="button" type="submit" data-giftcard-submit
+        {{#if forms.gift_certificate.editing}}
+          value="{{lang 'core.giftcard.purchase.update_value'}}"
+        {{else}}
+          value="{{lang 'core.giftcard.purchase.submit_value'}}"
+        {{/if}}>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,72 @@
+<figure class="product-item"
+  {{#if overlay '===' 'collection_procucts_overlay_image_preview'}}
+    data-product-id="{{id}}"
+    data-image-preview
+  {{/if}}>
+
+  <div class="product-item-container"
+    {{#if image}}
+      style="background-image: url({{getImage image 'medium'}});"
+    {{else}}
+      style="background-image: url({{cdn '/assets/img/no-image.svg'}});"
+    {{/if}}
+    >
+
+    <a class="product-item-image-link" href="{{url}}" title="{{name}}">
+      {{#if image}}
+        <img class="product-item-image" src="{{getImage image 'thumbnail'}}" />
+      {{else}}
+        <img class="product-item-image" src="{{cdn '/assets/img/no-image.svg'}}" />
+      {{/if}}
+    </a>
+
+    {{#if overlay '===' 'collection_procucts_overlay_image_preview'}}
+      <div class="product-item-image-preview" data-image-preview-container>
+        {{> components/collection/collection-image-preview}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="product-item-overlay {{#if out_of_stock_message}}out-of-stock{{/if}}">
+    <div class="product-item-overlay-inner">
+      <div class="product-item-details">
+        {{#if out_of_stock_message}}
+          <span class="product-out-of-stock">{{out_of_stock_message}}</span>
+        {{else}}
+          {{#if brand.name}}
+            <span class="product-item-brand">{{brand.name}}</span>
+          {{/if}}
+        {{/if}}
+
+        <h5 class="product-item-name">
+          <a href="{{url}}" title="{{name}}">{{name}}</a>
+        </h5>
+
+        <span class="product-item-price">
+          {{> components/product/price context="product-item"}}
+        </span>
+
+        <a class="product-item-link" href="{{url}}" title="{{name}}">
+          <span class="product-item-link-label show-for-sr">{{name}}</span>
+        </a>
+
+        <button class="product-item-quick-shop" data-quick-shop-trigger="{{id}}">
+          <span class="product-item-quick-shop-label">{{lang 'core.product.quickshop.view'}}</span>
+          <svg><use xlink:href="#icon-plus"></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  {{#if price.saved}}
+    <p class="product-item-sale-badge">{{lang 'core.product.sale'}}</p>
+  {{/if}}
+
+  {{#if show_remove}}
+    <form class="form product-item-remove" action="{{remove_url}}" method="post">
+      <button type="submit">
+        <svg><use xlink:href="#icon-close"></svg>
+      </button>
+    </form>
+  {{/if}}
+</figure>

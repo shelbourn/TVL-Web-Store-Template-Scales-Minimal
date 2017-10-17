@@ -1,0 +1,19 @@
+<ul class="footer-social-list">
+  {{#each social_media}}
+    <li class="footer-social-list-item">
+      {{#if display_name '===' 'google+'}}
+        <a href="{{url}}" class="google" target="_blank">
+          <svg class="footer-social-list-item-icon">
+            <use xlink:href="#icon-google">
+          </svg>
+        </a>
+      {{else}}
+        <a href="{{url}}" class="{{display_name}}" target="_blank">
+          <svg class="footer-social-list-item-icon">
+            <use xlink:href="#icon-{{display_name}}">
+          </svg>
+        </a>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>

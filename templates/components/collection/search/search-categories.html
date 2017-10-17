@@ -1,0 +1,20 @@
+<div class="tab-content-panel" id="search-results-categories">
+  <div class="search-results-content">
+    {{#if category_results}}
+      {{#each category_results}}
+        <div class="search-result-item">
+          {{#each this}}
+            {{#if @last}}
+              <h3 class="search-result-item-title">{{name}}</h3>
+              <a href="{{url}}" class="button button-small search-result-item-shop">{{lang 'search.shop_all'}}</a>
+            {{/if}}
+          {{/each}}
+        </div>
+      {{/each}}
+    {{else}}
+      <p class="empty-results">
+        <span>{{lang 'search.empty_for_categories'}} <strong>"{{forms.search.query}}"</strong></span>
+      </p>
+    {{/if}}
+  </div>
+</div>

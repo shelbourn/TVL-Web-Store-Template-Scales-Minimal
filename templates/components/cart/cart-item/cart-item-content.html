@@ -1,0 +1,78 @@
+<figure class="cart-item-image-container">
+  {{#if type '===' 'GiftCertificate'}}
+    <a href="javascript:void(0)">
+      <img class="cart-item-image" src="{{cdn '/assets/img/giftcard-image.svg'}}" alt="{{recipient}}">
+    </a>
+  {{else}}
+    {{#if image}}
+      <a href="{{url}}">
+        <img class="cart-item-image" src="{{getImage image 'thumbnail'}}" alt="{{name}}">
+      </a>
+    {{else}}
+      <a href="{{edit_url}}">
+        <img class="cart-item-image" src="{{cdn '/assets/img/no-image.svg'}}" alt="{{name}}">
+      </a>
+    {{/if}}
+  {{/if}}
+</figure>
+
+<div class="cart-item-details-container">
+  {{#if brand.name}}
+    <h4 class="cart-item-brand">{{brand.name}}</h4>
+  {{/if}}
+
+  <h3 class="cart-item-title">
+    {{#if url}}
+      <a href="{{url}}">{{name}}</a>
+    {{else}}
+      <a href="{{edit_url}}">{{name}}</a>
+    {{/if}}
+  </h3>
+
+  {{#any options configurable_fields}}
+    <div class="cart-item-option-list">
+      {{#each options}}
+        <div class="cart-item-option">
+          <span class="cart-item-option-title">{{name}}</span>
+          <span class="cart-item-option-value">
+            {{#if value '===' 'checked'}}
+              {{lang 'cart.cart_item.yes'}}
+            {{else}}
+              {{{value}}}
+            {{/if}}
+          </span>
+        </div>
+      {{/each}}
+
+      {{#if configurable_fields}}
+        {{#each configurable_fields}}
+          <div class="cart-item-option">
+            <span class="cart-item-option-title">{{name}}</span>
+            <span class="cart-item-option-value">
+              {{#if value '===' 'checked'}}
+                {{lang 'cart.cart_item.yes'}}
+              {{else}}
+                {{{value}}}
+              {{/if}}
+            </span>
+          </div>
+        {{/each}}
+      {{/if}}
+    </div>
+  {{/any}}
+
+  {{#if event_date}}
+    <div class="cart-item-option-list">
+      <div class="cart-item-option">
+        <span class="cart-item-option-title">{{event_date.name}}</span>
+        <span class="cart-item-option-value">{{event_date.date}}</span>
+      </div>
+    </div>
+  {{/if}}
+
+  {{> components/cart/gift-wrap/gift-wrap-item}}
+
+  <a class="cart-item-remove" href="{{remove_url}}" data-cart-item-remove>
+    {{lang 'cart.remove'}}
+  </a>
+</div>

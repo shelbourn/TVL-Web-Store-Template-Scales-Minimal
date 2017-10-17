@@ -1,0 +1,31 @@
+---
+blog:
+  posts:
+    limit: {{theme_settings.blog_posts_per_page}}
+---
+
+{{#partial "page"}}
+
+<section class="blog-index">
+  <header class="page-header">
+    <h1 class="page-header-title">{{blog.name}}</h1>
+    {{#if blog.tag}}
+      <p class="page-header-subtext">{{lang 'blog.tag_permalink'}} "<strong>{{blog.tag}}</strong>"</p>
+    {{/if}}
+  </header>
+  <section class="blog-item-list">
+    {{#each blog.posts}}
+      {{> components/blog/blog-item this}}
+    {{/each}}
+  </section>
+</section>
+
+{{#if pagination.blog.links}}
+  <section class="blog-pagination">
+    {{> components/common/pagination pagination.blog}}
+  </section>
+{{/if}}
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,14 @@
+
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.account.receipt.heading' number=order.id)}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/account/orders/details}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

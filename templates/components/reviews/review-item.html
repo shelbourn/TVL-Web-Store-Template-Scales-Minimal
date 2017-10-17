@@ -1,0 +1,19 @@
+<article class="product-single-review-item" itemprop="review" itemscope itemtype="http://schema.org/Review">
+  <header class="product-single-review-item-header">
+    <span class="product-single-review-item-meta">
+      <meta itemprop="author" content="{{name}}">
+      {{lang 'product.reviews.written_by_on' name=name date=date}}
+    </span>
+
+    <div class="product-single-review-item-stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+      {{> components/reviews/ratings rating=rating size="medium"}}
+      <span class="product-single-review-item-score show-for-sr" itemprop="ratingValue">{{rating}}/5</span>
+    </div>
+
+    <h3 class="product-single-review-item-title">{{title}}</h3>
+  </header>
+
+  <section class="product-single-review-item-body">
+    <p itemprop="reviewBody">{{text}}</p>
+  </section>
+</article>

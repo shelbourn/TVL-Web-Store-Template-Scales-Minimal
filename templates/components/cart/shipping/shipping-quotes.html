@@ -1,0 +1,39 @@
+<form class="cart-total-item form">
+  <span class="cart-total-item-label">
+    {{lang 'cart.shipping_calculator.shipping_method'}}
+  </span>
+
+  <div class="shipping-quotes-list form-field form-field-radio">
+    {{#each quotes.shipping_methods}}
+      <label class="form-label" for="shipping-quote-{{id}}">
+        <input class="form-input form-radio"
+          id="shipping-quote-{{id}}"
+          name="shipping_method"
+          type="radio"
+          value="{{id}}"
+          data-shipping-quote>
+        <span class="form-label-text">{{provider_name}} <span class="shipping-quote-cost">{{cost.formatted}}</span></span>
+      </label>
+    {{/each}}
+
+    {{#each quotes.ups_shipping_methods}}
+      <label class="form-label" for="shipping-quote-{{id}}">
+        <input class="form-input form-radio"
+          id="shipping-quote-{{id}}"
+          name="shipping_method"
+          type="radio"
+          value="{{id}}"
+          data-shipping-quote>
+        <span class="form-label-text">
+          {{#if logo_path}}
+            <img src="{{logo_path}}" alt="{{description}}">
+          {{/if}}
+          {{provider_name}} &mdash; {{description}}
+          <span class="shipping-quote-cost">{{cost.formatted}}</span></span>
+      </label>
+    {{/each}}
+  </div>
+  <div class="form-actions">
+    <input class="button button-alt button-small" type="submit" value="{{lang 'cart.shipping_calculator.select'}}">
+  </div>
+</form>

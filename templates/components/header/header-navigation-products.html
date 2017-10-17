@@ -1,0 +1,17 @@
+<h1 class="header-navigation-product-title">
+  <a href="{{category.url}}" title="{{category.name}}">
+    {{#if category.name}}
+      {{lang 'header.navigation.products_all' name=category.name}}
+    {{/if}}
+  </a>
+</h1>
+
+<div class="header-navigation-product-list">
+  {{#if category.products.length}}
+    {{#each (limit category.products 4)}}
+      {{> components/product/product-item overlay=../../theme_settings.collection_products_overlay_type}}
+    {{/each}}
+  {{else}}
+    <p class="header-navigation-product-empty">{{lang 'header.navigation.no_products'}}</p>
+  {{/if}}
+</div>

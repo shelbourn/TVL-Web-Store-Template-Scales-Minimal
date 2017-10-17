@@ -1,0 +1,1 @@
+{"checkout.scss":"/*! Theme: Scales v1.1.4 */\n.header {\n  //scss-lint:disable NameFormat\n  background-color: stencilColor(\"header-background\");\n}\n\n.header-logo {\n  padding: 20px 40px;\n  text-align: center;\n\n  img {\n    max-width: 175px;\n    max-height: 100px;\n  }\n}\n"}

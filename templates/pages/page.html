@@ -1,0 +1,23 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=page.title}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content user-defined-content">
+      {{#if page.content}}
+        {{#replace '%%Syndicate%%' page.content}}
+          {{> components/pages/rss-feed}}
+        {{else}}
+          {{{page.content}}}
+        {{/replace}}
+      {{/if}}
+
+      {{#if page.feed}}
+        {{> components/pages/syndicated-content articles=page.feed}}
+      {{/if}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,1 @@
+{"components/common/breadcrumbs":"<section class=\"breadcrumbs-container\">\n  {{#each breadcrumbs}}\n    <a href=\"{{url}}\">{{name}}</a> {{#unless @last}}/{{/unless}}\n  {{/each}}\n</section>\n"}

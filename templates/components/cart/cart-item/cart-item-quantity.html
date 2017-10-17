@@ -1,0 +1,27 @@
+<div class="form-field form-field-number form-field-quantity" data-cart-item-quantity>
+  <label class="form-label" for="quantity">
+    <span class="form-label-text show-for-sr">{{lang 'cart.quantity'}}</span>
+
+    <div class="form-field-control">
+      <input
+        class="quantity-input form-input"
+        type="text"
+        name="qty[]"
+        value="{{quantity}}"
+        min="{{#if product.min_purchase_quantity}}{{product.min_purchase_quantity}}{{else}}0{{/if}}"
+        max="{{#if product.max_purchase_quantity}}{{product.max_purchase_quantity}}{{/if}}"
+        data-cart-item-quantity-input
+      >
+
+      <div class="quantity-toggle-container">
+        <span class="quantity-toggle quantity-increment" data-cart-item-quantity-change data-cart-item-quantity-increment>
+          <svg class="quantity-icon"><use xlink:href="#icon-plus"></svg>
+        </span>
+
+        <span class="quantity-toggle quantity-decrement" data-cart-item-quantity-change data-cart-item-quantity-decrement>
+          <svg class="quantity-icon"><use xlink:href="#icon-minus"></svg>
+        </span>
+      </div>
+    </div>
+  </label>
+</div>

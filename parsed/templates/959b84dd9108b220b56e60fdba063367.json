@@ -1,0 +1,1 @@
+{"components/reviews/ratings":"<div class=\"rating-stars\" aria-hidden=\"true\">\n  {{#for 1 5}}\n    {{#if ../this.rating '>=' $index}}\n      <svg class=\"star star-full\">\n        <use xlink:href=\"#icon-star\">\n      </svg>\n    {{else}}\n      <svg class=\"star star-empty\">\n        <use xlink:href=\"#icon-star\">\n      </svg>\n    {{/if}}\n  {{/for}}\n</div>\n"}

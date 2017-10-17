@@ -1,0 +1,14 @@
+<form class="footer-newsletter-form" action="{{urls.subscribe.action}}" method="post">
+  <input type="hidden" name="action" value="subscribe">
+  <input type="hidden" name="nl_first_name" value="bc">
+  <input type="hidden" name="check" value="1">
+
+  <label class="footer-newsletter-label" for="nl_email">
+    <span class="footer-newsletter-label-text show-for-sr">{{lang 'newsletter.placeholder'}}</span>
+    <input class="footer-newsletter-input" id="nl_email" name="nl_email" type="email" value="{{customer.email}}" placeholder="{{lang 'newsletter.placeholder'}}">
+    <button class="footer-newsletter-submit-button" type="submit">
+      <span class="footer-newsletter-submit-label show-for-sr">{{lang 'newsletter.subscribe'}}</span>
+      <svg class="footer-newsletter-submit-icon"><use xlink:href="#icon-chevron-right"></svg>
+    </button>
+  </label>
+</form>

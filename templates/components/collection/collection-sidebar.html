@@ -1,0 +1,71 @@
+{{#if visible}}
+  {{#if items}}
+    <div class="facet-filter" data-facet-filter>
+      <h6 class="facet-title" data-facet-toggle>
+        <span class="facet-label">{{title}}</span>
+
+        {{#if remove_url}}
+          <span class="facet-toggle">
+            <a href="{{remove_url}}" rel="nofollow" data-faceted-search-facet data-facet-remove>
+              <svg><use xlink:href="#icon-plus"></svg>
+            </a>
+          </span>
+        {{else}}
+          {{#if selected}}
+            {{#unless start_collapsed}}
+              <span class="facet-toggle is-open">
+                <svg><use xlink:href="#icon-minus"></svg>
+              </span>
+            {{/unless}}
+          {{else}}
+            {{#if start_collapsed}}
+              <span class="facet-toggle">
+                <svg><use xlink:href="#icon-plus"></svg>
+              </span>
+            {{else}}
+              <span class="facet-toggle is-open">
+                <svg><use xlink:href="#icon-minus"></svg>
+              </span>
+            {{/if}}
+          {{/if}}
+        {{/if}}
+      </h6>
+
+      {{{dynamicComponent 'components/faceted-search/facets'}}}
+    </div>
+  {{/if}}
+{{/if}}
+
+{{#compare partial 'range'}}
+  <div class="facet-filter" data-facet-filter>
+    <h6 class="facet-title" data-facet-toggle>
+      <span class="facet-label">{{title}}</span>
+
+      {{#if remove_url}}
+        <span class="facet-toggle">
+          <a href="{{remove_url}}" rel="nofollow" data-faceted-search-facet data-facet-remove>&#120;</a>
+        </span>
+      {{else}}
+        {{#if selected}}
+          {{#unless start_collapsed}}
+            <span class="facet-toggle is-open">
+              <svg><use xlink:href="#icon-minus"></svg>
+            </span>
+          {{/unless}}
+        {{else}}
+          {{#if start_collapsed}}
+            <span class="facet-toggle" data-facet-toggle>
+              <svg><use xlink:href="#icon-plus"></svg>
+            </span>
+          {{else}}
+            <span class="facet-toggle is-open" data-facet-toggle>
+              <svg><use xlink:href="#icon-minus"></svg>
+            </span>
+          {{/if}}
+        {{/if}}
+      {{/if}}
+    </h6>
+
+    {{{dynamicComponent 'components/faceted-search/facets'}}}
+  </div>
+{{/compare}}

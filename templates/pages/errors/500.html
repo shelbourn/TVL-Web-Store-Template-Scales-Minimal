@@ -1,0 +1,15 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'errors.500.title')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content">
+      <div class="alert alert-error">
+        {{lang 'errors.500.message'}}
+      </div>
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

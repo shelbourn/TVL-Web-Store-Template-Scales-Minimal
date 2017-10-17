@@ -1,0 +1,14 @@
+
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.account.messages.heading')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/account/inbox}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

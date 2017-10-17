@@ -1,0 +1,7 @@
+<header class="product-single-related-header product-single-section-header">
+  <h2 class="product-single-related-title section-title">{{lang 'product.related'}}</h2>
+</header>
+
+{{#each product.related_products}}
+  {{> components/product/product-item overlay=../theme_settings.collection_products_overlay_type}}
+{{/each}}

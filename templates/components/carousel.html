@@ -1,0 +1,36 @@
+{{inject 'carouselDelay' carousel.swap_frequency}}
+
+<section class="carousel">
+  <div class="carousel-slides" data-carousel-slides>
+
+    {{#each carousel.slides}}
+      <figure class="carousel-item">
+        <a class="carousel-item-image" href="{{url}}"
+          {{#if ../theme_settings.carousel-height '!=' 'carousel-height-auto'}}
+            style="background-image:url('{{this.image}}');"
+          {{/if}}>
+
+          <img src="{{this.image}}" alt="{{{alt_text}}}" />
+        </a>
+        <figcaption class="carousel-item-info">
+          {{#if heading}}
+            <h2 class="carousel-item-heading">{{{heading}}}</h2>
+          {{/if}}
+
+          {{#if text}}
+            <p class="carousel-item-caption">{{{text}}}</p>
+          {{/if}}
+
+          {{#if button_text}}
+            <a class="carousel-item-button button button-inverse" {{#if url}}href="{{url}}"{{/if}}>{{{button_text}}}</a>
+          {{/if}}
+        </figcaption>
+        <span class="carousel-overlay">
+          {{#unless button_text}}
+            <a class="carousel-overlay-link" href="{{url}}">{{url}}</a>
+          {{/unless}}
+        </span>
+      </figure>
+    {{/each}}
+  </div>
+</section>

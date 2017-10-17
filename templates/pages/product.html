@@ -1,0 +1,39 @@
+---
+product:
+  reviews:
+      limit: 10
+  related_products:
+      limit: {{theme_settings.single-product-related-products-count}}
+  videos:
+      limit: 10
+---
+
+{{#partial "page"}}
+
+  {{> components/common/breadcrumbs}}
+
+  <section class="product-single-container" data-product-container>
+    <div class="product-single-image-list {{theme_settings.single_product_image_layout}}" data-product-image-list>
+      {{> components/product/product-single-images}}
+    </div>
+
+    <div class="product-single-details-container" data-product-details-container>
+      {{> components/product/product-single-details}}
+    </div>
+
+    <div class="product-single-reviews-container" data-product-reviews-container>
+      {{> components/product/product-single-reviews}}
+    </div>
+
+    {{#if product.related_products.length '>' 1}}
+      <div class="product-single-related-container product-single-related-grid-{{product.related_products.length}}" data-product-related-container data-quick-shop-scope>
+        {{> components/product/product-single-related}}
+      </div>
+    {{/if}}
+  </section>
+
+  {{> components/product/product-gallery-overlay}}
+
+{{/partial}}
+
+{{> layout/base}}

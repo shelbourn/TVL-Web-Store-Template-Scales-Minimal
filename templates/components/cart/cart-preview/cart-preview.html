@@ -1,0 +1,27 @@
+<button class="cart-preview-toggle" data-cart-preview-toggle>
+  <svg class="bag-icon"><use xlink:href="#icon-bag"></svg>
+
+  <span class="cart-preview-count" data-cart-preview-count>
+    {{#if cart.quantity '>' 0}}
+      {{> components/cart/cart-preview/cart-preview-count}}
+    {{else}}
+      0
+    {{/if}}
+  </span>
+</button>
+
+<aside class="cart-preview-container" data-cart-preview-container>
+  <button class="cart-preview-close" data-cart-preview-toggle data-cart-preview-close>
+    <svg><use xlink:href="#icon-close"></svg>
+  </button>
+
+  {{#if currency_selector.currencies.length '>' 1}}
+    <div class="cart-preview-currency-selector" data-cart-preview-currency>
+      {{> components/common/currency-selector}}
+    </div>
+  {{/if}}
+
+  <div class="cart-preview-item-list-container" data-cart-preview-list-container>
+    {{> components/cart/cart-preview/cart-preview-item-list}}
+  </div>
+</aside>

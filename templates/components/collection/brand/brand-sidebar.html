@@ -1,0 +1,9 @@
+{{#if brand.products}}
+  {{#if brand.faceted_search_enabled}}
+    <div class="facet-container {{#if brand.selected.remove_all_url}}active-filters{{/if}}" data-faceted-search>
+      {{#each brand.facets}}
+        {{> components/collection/collection-sidebar}}
+      {{/each}}
+    </div>
+  {{/if}}
+{{/if}}

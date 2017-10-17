@@ -1,0 +1,74 @@
+<h3 class="cart-total-title">{{lang 'cart.summary'}}</h3>
+
+<aside class="cart-total-container">
+
+  <div class="cart-total-item cart-subtotal">
+    <span class="cart-total-item-label">{{lang 'cart.subtotal'}}</span>
+    <span class="cart-total-item-value">{{cart.sub_total.formatted}}</span>
+  </div>
+
+  {{#if cart.discount}}
+    <div class="cart-total-item cart-discount">
+      <span class="cart-total-item-label">{{lang 'cart.discount.title'}}</span>
+      <span class="cart-total-item-value">{{cart.discount.formatted}}</span>
+    </div>
+  {{/if}}
+
+  {{#if cart.gift_wrapping_cost.value '>' 0}}
+    <div class="cart-total-item">
+      <span class="cart-total-item-label">{{lang 'cart.gift_wrapping.title'}}</span>
+      <span class="cart-total-item-value">{{cart.gift_wrapping_cost.formatted}}</span>
+    </div>
+  {{/if}}
+
+  {{> components/cart/discounts/discount-coupon-codes}}
+
+  {{#if settings.gift_certificates_enabled}}
+    {{> components/cart/discounts/discount-gift-certificates}}
+  {{/if}}
+
+  {{#if cart.shipping_handling.show_estimator}}
+    {{> components/cart/shipping/shipping-calculator cart.shipping_handling}}
+  {{/if}}
+
+  {{#each cart.taxes}}
+    <div class="cart-total-item cart-tax">
+      <span class="cart-total-item-label">{{name}}</span>
+      <span class="cart-total-item-value">{{cost.formatted}}</span>
+    </div>
+  {{/each}}
+
+  <div class="cart-total-item cart-total">
+    <span class="cart-total-item-label cart-total-label">{{lang 'cart.total_amount'}}</span>
+    <span class="cart-total-item-value cart-total-value ">{{cart.grand_total.formatted}} {{currency_selector.active_currency_code}}</span>
+  </div>
+
+  <div class="cart-actions">
+    <span class="cart-actions-item cart-actions-update">
+      <button class="button button-small button-alt" type="button" data-cart-update>{{lang 'cart.update_cart'}}</button>
+    </span>
+
+    <span class="cart-actions-item cart-actions-checkout">
+      <a class="button button-small" href="{{urls.checkout.single_address}}">{{lang 'cart.check_out'}}</a>
+    </span>
+
+    <div class="cart-additional-checkout-buttons">
+      {{#each cart.additional_checkout_buttons}}
+        {{{this}}}
+      {{/each}}
+    </div>
+  </div>
+
+  <div class="cart-messages" data-cart-messages>
+    {{#if cart.quantity '===' 0}}
+      {{> core/alerts/alert-info (lang 'cart.empty')}}
+    {{/if}}
+
+    {{#if cart.status_messages}}
+      {{#each cart.status_messages}}
+        {{> core/alerts/alert-info message=message dismissable=false}}
+      {{/each}}
+    {{/if}}
+  </div>
+
+</aside>

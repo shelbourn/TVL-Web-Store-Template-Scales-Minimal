@@ -1,0 +1,40 @@
+<nav class="cart-preview-navigation" data-cart-preview-navigation>
+  <ul class="cart-preview-navigation-list">
+
+    {{#if cart.quantity '>' 0}}
+      <li class="cart-preview-navigation-list-item">
+        <a href="{{urls.cart}}">{{lang 'cart.cart_preview.view_cart'}} ({{cart.quantity}})</a>
+      </li>
+    {{/if}}
+
+    {{#if settings.account_creation_enabled}}
+      {{#if customer}}
+        {{#if settings.show_wishlist}}
+          <li class="cart-preview-navigation-list-item">
+            <a href="{{urls.account.wishlists.all}}">{{lang 'footer.wishlist'}}</a>
+          </li>
+        {{/if}}
+
+        <li class="cart-preview-navigation-list-item">
+          <a href="{{urls.account.index}}">{{lang 'footer.your_account'}}</a>
+        </li>
+
+        <li class="cart-preview-navigation-list-item">
+          <a href="{{urls.auth.logout}}">{{lang 'footer.log_out'}}</a>
+        </li>
+      {{else}}
+        <li class="cart-preview-navigation-list-item">
+          <a href="{{urls.auth.login}}">{{lang 'footer.log_in'}}</a>
+        </li>
+
+        <li class="cart-preview-navigation-list-item">
+          <a href="{{urls.auth.create_account}}">{{lang 'footer.sign_up'}}</a>
+        </li>
+      {{/if}}
+    {{/if}}
+
+    <li class="cart-preview-navigation-list-item cart-preview-payment-icon-list">
+      {{> components/common/payment-icons}}
+    </li>
+  </ul>
+</nav>

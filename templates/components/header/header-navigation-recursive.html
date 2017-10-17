@@ -1,0 +1,33 @@
+{{#if children}}
+  <ul class="header-navigation-list extended-tier" data-extended-tier>
+
+    {{#each children}}
+      <li class="header-navigation-list-item {{#if children}}has-children{{/if}}"
+        {{#if children}}data-dropdown-toggle{{/if}}
+        {{#if ../../products}}data-products-toggle{{/if}}>
+        <a href="{{url}}" data-url="{{url}}">
+          <span class="header-navigation-list-item-label">
+            {{name}}
+
+            {{#if children}}
+              <span class="header-navigation-list-item-arrow">
+                <svg><use xlink:href="#icon-chevron-right"></svg>
+              </span>
+
+              <span class="header-navigation-list-item-toggle">
+                <span class="header-navigation-list-item-toggle-bar"></span>
+                <span class="header-navigation-list-item-toggle-bar"></span>
+              </span>
+            {{/if}}
+          </span>
+        </a>
+        {{> components/header/header-navigation-recursive}}
+      </li>
+    {{/each}}
+
+    <li class="header-navigation-list-item view-all-link">
+      <a href="{{url}}"><span class="header-navigation-list-item-label">{{lang 'header.navigation.view_all' category=name}}</span></a>
+    </li>
+
+  </ul>
+{{/if}}

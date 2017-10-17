@@ -1,0 +1,21 @@
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=page.title}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content user-defined-content page-form">
+      {{#if forms.contact.success}}
+        {{> core/alerts/alert-success (lang 'core.contact.successful' shopPath=urls.home)}}
+      {{else}}
+        <p>{{{page.content}}}</p>
+      {{/if}}
+
+      {{#unless forms.contact.success}}
+        {{> core/forms/form-contact-us}}
+      {{/unless}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

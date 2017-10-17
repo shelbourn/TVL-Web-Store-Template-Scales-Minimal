@@ -1,0 +1,21 @@
+<header class="product-single-reviews-header product-single-section-header">
+<h2 class="product-single-reviews-header-title section-title">
+  {{lang 'product.reviews.heading'}}
+</h2>
+
+  {{#if product.num_reviews '>' 0}}
+    <span class="product-single-reviews-header-rating">
+      {{lang 'product.reviews.total_based_on' score=product.rating numReviews=product.num_reviews}}
+    </span>
+  {{else}}
+    <span class="product-single-reviews-header-empty">
+      {{lang 'product.reviews.no_reviews' }}
+    </span>
+  {{/if}}
+
+  <a href="#modal-review-form" class="product-details-review-link" data-leave-review>
+    <span>{{ lang 'product.reviews.write_review' }}</span>
+  </a>
+</header>
+
+{{> components/reviews/review-list}}

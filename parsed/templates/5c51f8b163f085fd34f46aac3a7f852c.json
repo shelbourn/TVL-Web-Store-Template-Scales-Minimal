@@ -1,0 +1,1 @@
+{"components/common/compare-widget":"<div data-compare-widget>\n  <span class=\"compare-title\">{{lang 'compare.title' num=0}}</span>\n  <a href=\"{{urls.compare}}\" data-compare-link=\"{{urls.compare}}\">{{lang 'core.product.compare'}}</a>\n  <div data-compare-items>\n  </div>\n</div>\n"}

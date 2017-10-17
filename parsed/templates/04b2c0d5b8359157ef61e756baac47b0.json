@@ -1,0 +1,1 @@
+{"components/cart/cart-item/cart-item-price":"<p class=\"{{#if price_discounted}}price-discounted{{/if}}\">{{price.formatted}}</p>\n\n{{#if price_discounted}}\n  <p>{{price_discounted.formatted}}</p>\n{{/if}}\n"}

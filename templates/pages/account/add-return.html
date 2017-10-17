@@ -1,0 +1,14 @@
+
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.account.return.heading' id=forms.return.order_id)}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page">
+      {{> core/account/add-return}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

@@ -1,0 +1,29 @@
+{{#if settings.account_creation_enabled}}
+  <ul class="header-mobile-actions-list">
+    {{#if customer}}
+      <li class="header-mobile-actions-list-item">
+        <a href="{{urls.account.index}}">
+          {{lang 'footer.your_account'}}
+        </a>
+      </li>
+
+      <li class="header-mobile-actions-list-item">
+        <a href="{{urls.auth.logout}}">
+          {{lang 'footer.log_out'}}
+        </a>
+      </li>
+    {{else}}
+      <li class="header-mobile-actions-list-item">
+        <a href="{{urls.auth.create_account}}">
+          {{lang 'footer.sign_up'}}
+        </a>
+      </li>
+
+      <li class="header-mobile-actions-list-item">
+        <a href="{{urls.auth.login}}">
+          {{lang 'footer.log_in'}}
+        </a>
+      </li>
+    {{/if}}
+  </ul>
+{{/if}}

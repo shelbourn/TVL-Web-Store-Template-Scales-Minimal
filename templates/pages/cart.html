@@ -1,0 +1,24 @@
+{{#partial "page"}}
+
+<header class="page-header">
+  <h1 class="page-header-title">{{lang 'cart.title'}}</h1>
+</header>
+
+<article class="page-content-wrapper">
+
+  <section class="cart-container" data-cart-container>
+    <div class="cart-items-container" data-cart-content>
+      {{> components/cart/cart-item/cart-item-layout}}
+    </div>
+
+    <div class="cart-totals-container" data-cart-totals>
+      {{> components/cart/cart-totals}}
+      {{{snippet 'cart'}}}
+    </div>
+  </section>
+  
+</article>
+
+{{/partial}}
+
+{{> layout/base}}

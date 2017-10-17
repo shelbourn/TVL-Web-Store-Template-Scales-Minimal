@@ -1,0 +1,14 @@
+
+{{#partial "page"}}
+
+  {{> components/pages/page-header page_title=(lang 'core.account.settings.heading')}}
+
+  <article class="page-content-wrapper">
+    <section class="page-content account-page account-form">
+      {{> core/account/edit}}
+    </section>
+  </article>
+
+{{/partial}}
+
+{{> layout/base}}

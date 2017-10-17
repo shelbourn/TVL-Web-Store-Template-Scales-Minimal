@@ -1,0 +1,33 @@
+---
+brand:
+  products:
+    limit: {{theme_settings.collection_products_per_page}}
+---
+
+{{#partial "page"}}
+
+  {{> components/collection/collection-header collection=brand}}
+
+  {{#if banners.top.length}}
+    {{> components/common/banner banners=banners.top}}
+  {{/if}}
+
+  <main class="product-collection-container" data-collection>
+    <section class="product-collection-container-inner">
+
+      {{> components/collection/collection-sorting collection=brand}}
+
+      <aside class="product-collection-filter-sidebar" data-collection-sidebar>
+        {{> components/collection/brand/brand-sidebar}}
+      </aside>
+
+      <section class="product-collection-item-list-container" data-collection-product-list data-quick-shop-scope>
+        {{> components/collection/brand/brand-products}}
+      </section>
+
+    </section>
+  </main>
+
+{{/partial}}
+
+{{> layout/base}}

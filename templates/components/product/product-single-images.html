@@ -1,0 +1,13 @@
+{{#each product.images}}
+  <figure class="product-single-image" data-product-image data-find-image-id="{{@index}}">
+    <div class="product-gallery-image-container" style="background-image:url({{getImage this 'large'}});">
+      <img src="{{getImage this 'large'}}" alt="{{this.alt}}" />
+    </div>
+  </figure>
+{{/each}}
+
+{{#each product.videos.list}}
+  <figure class="product-single-image" data-product-video>
+    <iframe src="https://www.youtube.com/embed/{{id}}?rel=0&showinfo=0&autohide=1" frameborder="0" allowfullscreen></iframe>
+  </figure>
+{{/each}}

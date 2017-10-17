@@ -1,0 +1,47 @@
+<header class="product-collection-header"
+  {{#if collection.image}}
+    style="background-image: url({{getImage collection.image 'zoom'}});"
+  {{/if}}>
+
+  {{#if collection.image}}
+    <img class="product-collection-header-image show-for-sr" src="{{getImage collection.image 'zoom'}}">
+  {{/if}}
+
+  <div class="product-collection-header-inner">
+    <h1 class="product-collection-header-title">
+      {{#if collection.name.length}}
+        {{collection.name}}
+      {{else}}
+        {{lang 'search.heading' query=forms.search.query}}
+      {{/if}}
+    </h1>
+
+    {{#if collection.description}}
+      {{{collection.description}}}
+    {{/if}}
+
+    {{#if theme_settings.collection-products-show-breadcrumbs}}
+      {{> components/common/breadcrumbs}}
+    {{/if}}
+
+    {{#if collection '===' product_results}}
+      <ul class="search-tabs" data-tabs>
+        <li class="search-tab-title">
+          <a href="#search-results-products" class="tab-link">
+            {{lang 'search.tabs.products'}} ({{pagination.product_results.total}})
+          </a>
+        </li>
+        <li class="search-tab-title">
+          <a href="#search-results-information" class="tab-link">
+            {{lang 'search.tabs.information'}} ({{lang 'search.content_tab_count' count=content_results.length}})
+          </a>
+        </li>
+        <li class="search-tab-title">
+          <a href="#search-results-categories" class="tab-link">
+            {{lang 'search.tabs.categories'}} ({{lang 'search.content_tab_count' count=category_results.length}})
+          </a>
+        </li>
+      </ul>
+    {{/if}}
+  </div>
+</header>

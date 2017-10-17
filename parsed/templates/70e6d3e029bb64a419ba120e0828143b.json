@@ -1,0 +1,1 @@
+{"components/cart/cart-preview/cart-preview-count":"<span class=\"count\">{{cart.quantity}}</span>\n"}
